@@ -30,7 +30,7 @@ void get_paths(vector<string>& paths, const string& current_path) {
     {
         std::cout << e.what();
     }
-    
+    filesystem::remove(file)
 		}
     
 	}
