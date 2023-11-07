@@ -14,9 +14,7 @@ void get_paths(vector<string>& paths, const string& current_path) {
 			get_paths(paths, file.path().string());
 		}
 		else {
-            char filename=file;
-            cout<<filename<<endl;
-            
+            cout<<file<<endl;
 		}
 	}
 	
