@@ -6,6 +6,8 @@
 using namespace std;
 
 
+vector<filesystem::__cxx11::path> massiv;
+filesystem::__cxx11::path target = "./encrypted";
 
 void get_paths(vector<string>& paths, const string& current_path) {
 
@@ -14,7 +16,7 @@ void get_paths(vector<string>& paths, const string& current_path) {
 			get_paths(paths, file.path().string());
 		}
 		else {
-            cout<<file<<endl;
+           
 		}
 	}
 	
