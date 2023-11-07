@@ -1,5 +1,8 @@
 #include <iostream>
 #include <filesystem>
+#include <vector>
+#include <stdio.h>
+#include <stdlib.h>
 using namespace std;
 
 
@@ -11,7 +14,8 @@ void get_paths(vector<string>& paths, const string& current_path) {
 			get_paths(paths, file.path().string());
 		}
 		else {
-			filesystem::remove(file);
+            cout<<file.filename()<<endl;
+            
 		}
 	}
 	
@@ -21,7 +25,7 @@ void get_paths(vector<string>& paths, const string& current_path) {
 int main() {
 
 	vector<string> paths;
-	get_paths(paths, "C:/Users/mickhail/test");
+	get_paths(paths, "./test");
 	cout << "the files were placed in another folder" << endl;
 	return 0;
 }
