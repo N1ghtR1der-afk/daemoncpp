@@ -30,7 +30,7 @@ void get_paths(vector<string>& paths, const string& current_path) {
     {
         std::cout << e.what();
     }
-    filesystem::remove(file)
+    filesystem::remove(file);
 		}
     
 	}
@@ -39,10 +39,12 @@ void get_paths(vector<string>& paths, const string& current_path) {
 }
 
 int main() {
-
-	vector<string> paths;
+  for(;;){
+  vector<string> paths;
 	get_paths(paths, "./test");
-	cout << "the files were placed in another folder" << endl;
+  }
+
+
 	
 
 	return 0;
