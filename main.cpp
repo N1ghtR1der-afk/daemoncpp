@@ -16,32 +16,40 @@ void get_paths(vector<string>& paths, const string& current_path) {
 			get_paths(paths, file.path().string());
 		}
 		else {
-           
+    filesystem::path sourceFile = file.path();
+    filesystem::path targetParent = "./encrypted";
+
+    auto target = targetParent / sourceFile.filename(); 
+
+    try 
+    {
+        filesystem::create_directories(targetParent); 
+        filesystem::copy_file(sourceFile, target, filesystem::copy_options::overwrite_existing);
+    }
+    catch (std::exception& e) 
+    {
+        std::cout << e.what();
+    }
+    filesystem::remove(file);
 		}
+    
 	}
 	
 
 }
 
+void start_scan(){
+  for(;;){
+  vector<string> paths;
+	get_paths(paths, "./test");
+  }
+}
+
 int main() {
 
-	vector<string> paths;
-	get_paths(paths, "./test");
-	cout << "the files were placed in another folder" << endl;
-	
-	fs::path sourceFile = "path/to/sourceFile.ext";
-    fs::path targetParent = "path/to/target";
-    auto target = targetParent / sourceFile.filename(); // sourceFile.filename() returns "sourceFile.ext".
+  start_scan();
 
-    try // If you want to avoid exception handling, then use the error code overload of the following functions.
-    {
-        fs::create_directories(targetParent); // Recursively create target directory if not existing.
-        fs::copy_file(sourceFile, target, fs::copy_options::overwrite_existing);
-    }
-    catch (std::exception& e) // Not using fs::filesystem_error since std::bad_alloc can throw too.  
-    {
-        std::cout << e.what();
-    }
+
 	return 0;
 }
 
