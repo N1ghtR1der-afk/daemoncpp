@@ -1,0 +1,16 @@
+//   unsigned char* a = (unsigned char*)"abcbcbvmnvmnvmnvmvnmvnmv";
+//   unsigned char* key = (unsigned char*)"qwertyqwertyqwer";
+//   ByteArray ab(24);
+//   for (int i = 0; i < 24; i++) ab[i] = a[i];
+//   ByteArray keyb(16);
+//   for (int i = 0; i < 16; i++) keyb[i] = key[i];
+//   ByteArray enc;
+//   ByteArray dec;
+//   Aes256::encrypt(keyb, ab, enc);
+//   for ( auto x : enc)
+//   {
+//     cout << (char)x;
+//   } 
+//   cout << endl;
+//  cout << endl;
+//   Aes256::decrypt(keyb, enc, dec);

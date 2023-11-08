@@ -3,6 +3,7 @@
 #include <vector>
 #include <stdio.h>
 #include <stdlib.h>
+#include "./libs/aes256.hpp"
 using namespace std;
 
 
@@ -53,12 +54,23 @@ void start_scan(){
   }
 }
 
+ByteArray get_byte_array(unsigned char* word, int len)
+{
+  unsigned char* word_ = (unsigned char*)word;
+  ByteArray result(len);
+  for (int i = 0; i < len; i++) result[i] = word_[i];
+  return result;
+
+
+}
 
 
 int main() {
-
-  start_scan();
-
+  unsigned char* a = (unsigned char*)"\230\255\200\122";
+  for ( auto x : get_byte_array(a,4))
+  {
+    cout << x;
+  } 
 
 	return 0;
 }
