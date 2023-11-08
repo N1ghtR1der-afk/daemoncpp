@@ -38,10 +38,18 @@ void get_paths(vector<string>& paths, const string& current_path) {
 
 }
 
+void crypt_files(const string& current_path){
+  vector<filesystem::path> files_list;
+  for (const auto& file : filesystem::directory_iterator(current_path)){
+    cout<<file<<endl;
+  }
+}
+
 void start_scan(){
   for(;;){
   vector<string> paths;
 	get_paths(paths, "./test");
+  crypt_files("./encrypted");
   }
 }
 
