@@ -19,7 +19,7 @@ void cryptor(filesystem::path source,filesystem::path out){
     cout<<"ERROR"<<endl;
   }
   else{
-    cout<<"File opened"<<endl;
+    
     string str;
     string k = "qwertyuiopasdfgh";
     ByteArray byte_k(k.begin(),k.end());
@@ -31,8 +31,8 @@ void cryptor(filesystem::path source,filesystem::path out){
         for ( auto x : buffer){
             file_out<<x;
         }
+        file_out<<endl;
     }
-    
   }
   file_target.close();
   file_out.close();
@@ -58,6 +58,7 @@ void get_paths(vector<string>& paths, const string& current_path) {
     {
         filesystem::create_directories(targetParent); 
         cryptor(sourceFile,target);
+        cout<<sourceFile.filename()<<" had crypted"<<endl;
     }
     catch (std::exception& e) 
     {
