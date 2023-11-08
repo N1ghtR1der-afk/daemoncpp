@@ -1,10 +1,10 @@
 #ifndef AES_256_CBC
 #define AES_256_CBC 1
 
-#include <openssl/conf.h>
-#include <openssl/evp.h>
-#include <openssl/err.h>
-#include <openssl/rand.h>
+#include <conf.h>
+#include <evp.h>
+#include <err.h>
+#include <rand.h>
 
 class AESBase {
 protected:
