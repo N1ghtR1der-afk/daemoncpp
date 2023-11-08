@@ -45,6 +45,8 @@ void start_scan(){
   }
 }
 
+
+
 int main() {
 
   start_scan();
