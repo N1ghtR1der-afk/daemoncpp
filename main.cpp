@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./libs/aes256.hpp"
+#include <ifstream>
 using namespace std;
 
 
@@ -66,11 +67,12 @@ ByteArray get_byte_array(unsigned char* word, int len)
 
 
 int main() {
-  unsigned char* a = (unsigned char*)"\230\255\200\122";
-  for ( auto x : get_byte_array(a,4))
-  {
-    cout << x;
-  } 
+
+  string path = "./encrypted/test.png"
+  ifstream file;
+  file.open()
+
+
 
 	return 0;
 }
