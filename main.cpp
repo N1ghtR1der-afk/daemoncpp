@@ -38,14 +38,17 @@ void get_paths(vector<string>& paths, const string& current_path) {
 
 }
 
-int main() {
+void start_scan(){
   for(;;){
   vector<string> paths;
 	get_paths(paths, "./test");
   }
+}
 
+int main() {
 
-	
+  start_scan();
+
 
 	return 0;
 }
