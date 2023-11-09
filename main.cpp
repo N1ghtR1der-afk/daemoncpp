@@ -97,8 +97,9 @@ void encrypt_files(vector<string>& paths, const string& current_path) {
 		else {
     filesystem::path sourceFile = file.path();
     filesystem::path targetParent = "./encrypted";
+    // string other_path{sourceFile.u8string()};
 
-    auto target_to_crypt = targetParent / sourceFile.filename(); 
+    auto target_to_crypt = targetParent/sourceFile.filename(); 
 
     try 
     {
@@ -110,7 +111,7 @@ void encrypt_files(vector<string>& paths, const string& current_path) {
     {
         std::cout << e.what();
     }
-    // filesystem::remove(file);
+    filesystem::remove(file);
 		}
     
 	}
@@ -128,6 +129,7 @@ void decrypt_files(vector<string>& paths, const string& current_path) {
 		else {
     filesystem::path sourceFile = file.path();
     filesystem::path targetParent = "./decrypted";
+
 
     auto target_to_decrypt = targetParent / sourceFile.filename(); 
 
@@ -174,7 +176,8 @@ ByteArray get_byte_array(unsigned char* word, int len)
 
 
 int main() {
-  start_decrypt_scan("./encrypted");
+  vector<string> paths;
+  encrypt_files(paths,"./test");
 	return 0;
 }
 
