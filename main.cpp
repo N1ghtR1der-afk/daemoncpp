@@ -174,10 +174,22 @@ ByteArray get_byte_array(unsigned char* word, int len)
   return result;
 }
 
+filesystem::path cut_path(filesystem::path path_to_cut){
+  filesystem::path p = path_to_cut;
+  for (auto it = p.begin()++; it != --p.end(); ++it){
+    std::cout << *it << " │ ";
+    std::cout << '\n';
+    }
+  return p;
+
+
+}
 
 int main() {
-  vector<string> paths;
-  encrypt_files(paths,"./test");
+  // vector<string> paths;
+  // encrypt_files(paths,"./test");
+  filesystem::path test = "./test/123.txt";
+  cut_path(test);
 	return 0;
 }
 
