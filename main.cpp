@@ -6,6 +6,7 @@
 #include "./libs/aes256.hpp"
 #include <fstream>
 #include <string>
+
 using namespace std;
 
 void encryptor(filesystem::path source,filesystem::path out){
@@ -189,7 +190,7 @@ ByteArray get_byte_array(unsigned char* word, int len)
 
 int main() {
   vector<string> paths;
-  encrypt_files(paths,"./test");
+  // encrypt_files(paths,"./test");
   decrypt_files(paths,"./encrypted");
 
 	return 0;
