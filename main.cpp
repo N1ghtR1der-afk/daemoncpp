@@ -88,6 +88,15 @@ filesystem::__cxx11::path target_to_crypt = "./test";
 filesystem::__cxx11::path target_to_decrypt = "./encrypted";
 
 
+filesystem::path cut_path(filesystem::path path_to_cut){
+  filesystem::path p;
+  for (auto it = ++++path_to_cut.begin(); it != --path_to_cut.end(); ++it){
+    p+=*it;
+    p+="/";
+    }
+  return p;
+}
+
 void encrypt_files(vector<string>& paths, const string& current_path) {
 
 	for (const auto& file : filesystem::directory_iterator(current_path)) {
@@ -96,7 +105,7 @@ void encrypt_files(vector<string>& paths, const string& current_path) {
 		}
 		else {
     filesystem::path sourceFile = file.path();
-    filesystem::path targetParent = "./encrypted";
+    filesystem::path targetParent = "./encrypted" / cut_path(file.path());
     // string other_path{sourceFile.u8string()};
 
     auto target_to_crypt = targetParent/sourceFile.filename(); 
@@ -111,9 +120,11 @@ void encrypt_files(vector<string>& paths, const string& current_path) {
     {
         std::cout << e.what();
     }
-    filesystem::remove(file);
-		}
     
+		}
+    filesystem::remove(file);
+    filesystem::remove(cut_path(file));
+ 
 	}
 	
 
@@ -128,7 +139,7 @@ void decrypt_files(vector<string>& paths, const string& current_path) {
 		}
 		else {
     filesystem::path sourceFile = file.path();
-    filesystem::path targetParent = "./decrypted";
+    filesystem::path targetParent = "./decrypted" / cut_path(file.path());
 
 
     auto target_to_decrypt = targetParent / sourceFile.filename(); 
@@ -143,9 +154,10 @@ void decrypt_files(vector<string>& paths, const string& current_path) {
     {
         std::cout << e.what();
     }
-    filesystem::remove(file);
+
 		}
-    
+    filesystem::remove(file);
+    filesystem::remove(cut_path(file));
 	}
 	
 
@@ -174,22 +186,12 @@ ByteArray get_byte_array(unsigned char* word, int len)
   return result;
 }
 
-filesystem::path cut_path(filesystem::path path_to_cut){
-  filesystem::path p = path_to_cut;
-  for (auto it = p.begin()++; it != --p.end(); ++it){
-    std::cout << *it << " │ ";
-    std::cout << '\n';
-    }
-  return p;
-
-
-}
 
 int main() {
-  // vector<string> paths;
-  // encrypt_files(paths,"./test");
-  filesystem::path test = "./test/123.txt";
-  cut_path(test);
+  vector<string> paths;
+  encrypt_files(paths,"./test");
+  decrypt_files(paths,"./encrypted");
+
 	return 0;
 }
 
