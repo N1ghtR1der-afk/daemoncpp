@@ -11,7 +11,31 @@
 using namespace std;
 namespace po = boost::program_options;
 
-po::options_description desc("Allowed options");
+ po::options_description desc("General options");
+  std::string task_type;
+  desc.add_options()
+    ("help,h", "Show help")
+    ("type,t", po::value<std::string>(&task_type), "Select task: train, recognize, score")
+    ;
+  po::options_description train_desc("Train options");
+  train_desc.add_options()
+    ("input,I", po::value<std::string>(), "Input .dat file")
+    ("info,i", po::value<std::string>(), "Input .trn file")
+    ("output,O", po::value<std::string>(), "Output parameters file .prs")
+    ;
+  po::options_description recognize_desc("Recognize options");
+  recognize_desc.add_options()
+    ("input,I",  po::value<std::vector<std::string> >(), "Input .dat file")
+    ("params,p", po::value<std::string>(), "Input .prs file")
+    ("output,O", po::value<std::string>(), "Output directory")
+    ;
+  po::options_description score_desc("Score options");
+  score_desc.add_options()
+    ("ethanol,e",  po::value<std::string>(), "Etalon .trn file")
+    ("test,t", po::value<std::string>(), "Testing .trn file")
+    ("output,O", po::value<std::string>(), "Output comparison file")
+    ;
+
 
 void encryptor(filesystem::path source,filesystem::path out){
   ifstream file_target;
