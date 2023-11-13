@@ -6,8 +6,10 @@
 #include "./libs/aes256.hpp"
 #include <fstream>
 #include <string>
+#include <boost/program_options>
 
 using namespace std;
+namespace po = boost::program_options;
 
 void encryptor(filesystem::path source,filesystem::path out){
   ifstream file_target;
@@ -190,7 +192,7 @@ ByteArray get_byte_array(unsigned char* word, int len)
 
 int main() {
   vector<string> paths;
-  // encrypt_files(paths,"./test");
+  encrypt_files(paths,"./test");
   decrypt_files(paths,"./encrypted");
 
 	return 0;
