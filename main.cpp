@@ -6,10 +6,12 @@
 #include "./libs/aes256.hpp"
 #include <fstream>
 #include <string>
-#include <boost/program_options>
+#include <boost/program_options.hpp>
 
 using namespace std;
 namespace po = boost::program_options;
+
+po::options_description desc("Allowed options");
 
 void encryptor(filesystem::path source,filesystem::path out){
   ifstream file_target;
