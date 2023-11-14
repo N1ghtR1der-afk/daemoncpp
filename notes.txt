@@ -13,3 +13,9 @@ Aes256::encrypt(keyb, ab, enc);
 //   cout << endl;
 //  cout << endl;
 //   Aes256::decrypt(keyb, enc, dec);
+
+  ("help,h", "Show help")
+  ("mode,m",po::value<string>()),
+  ("input_folder,i",po::value<string>()),
+  ("output_folder,o",po::value<string>()),
+  ("key,k", po::value<string>())

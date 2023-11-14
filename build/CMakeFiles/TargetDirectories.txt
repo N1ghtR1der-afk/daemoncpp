@@ -1,2 +1,3 @@
+/home/mickhailp/Documents/GitHub/daemoncpp/build/CMakeFiles/main.dir
 /home/mickhailp/Documents/GitHub/daemoncpp/build/CMakeFiles/edit_cache.dir
 /home/mickhailp/Documents/GitHub/daemoncpp/build/CMakeFiles/rebuild_cache.dir

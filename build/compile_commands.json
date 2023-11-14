@@ -1,12 +1,12 @@
 [
 {
   "directory": "/home/mickhailp/Documents/GitHub/daemoncpp/build",
-  "command": "/usr/bin/c++  -I/usr/include/boost  -pedantic -Wall -Wextra -Wall - \nWerror -g -std=gnu++17 -o CMakeFiles/Aes256.dir/libs/aes256.cpp.o -c /home/mickhailp/Documents/GitHub/daemoncpp/libs/aes256.cpp",
-  "file": "/home/mickhailp/Documents/GitHub/daemoncpp/libs/aes256.cpp"
+  "command": "/usr/bin/c++ -DBOOST_ALL_NO_LIB -DBOOST_PROGRAM_OPTIONS_DYN_LINK -I/home/mickhailp/Documents/GitHub/daemoncpp/./libs -g -std=gnu++17 -o CMakeFiles/main.dir/main.cpp.o -c /home/mickhailp/Documents/GitHub/daemoncpp/main.cpp",
+  "file": "/home/mickhailp/Documents/GitHub/daemoncpp/main.cpp"
 },
 {
   "directory": "/home/mickhailp/Documents/GitHub/daemoncpp/build",
-  "command": "/usr/bin/c++  -I/usr/include/boost  -pedantic -Wall -Wextra -Wall - \nWerror -g -std=gnu++17 -o CMakeFiles/Daemon.dir/main.cpp.o -c /home/mickhailp/Documents/GitHub/daemoncpp/main.cpp",
-  "file": "/home/mickhailp/Documents/GitHub/daemoncpp/main.cpp"
+  "command": "/usr/bin/c++ -DBOOST_ALL_NO_LIB -DBOOST_PROGRAM_OPTIONS_DYN_LINK -I/home/mickhailp/Documents/GitHub/daemoncpp/./libs -g -std=gnu++17 -o CMakeFiles/main.dir/libs/aes256.cpp.o -c /home/mickhailp/Documents/GitHub/daemoncpp/libs/aes256.cpp",
+  "file": "/home/mickhailp/Documents/GitHub/daemoncpp/libs/aes256.cpp"
 }
 ]

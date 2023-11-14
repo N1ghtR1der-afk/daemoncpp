@@ -7,33 +7,10 @@
 #include <fstream>
 #include <string>
 #include <boost/program_options.hpp>
+// #include <boost/program_options/cmdline.hpp>
 using namespace std;
 namespace po = boost::program_options;
 
- po::options_description desc("General options");
-  std::string task_type;
-  desc.add_options()
-    ("help,h", "Show help")
-    ("type,t", po::value<std::string>(&task_type), "Select task: train, recognize, score")
-    ;
-  po::options_description train_desc("Train options");
-  train_desc.add_options()
-    ("input,I", po::value<std::string>(), "Input .dat file")
-    ("info,i", po::value<std::string>(), "Input .trn file")
-    ("output,O", po::value<std::string>(), "Output parameters file .prs")
-    ;
-  po::options_description recognize_desc("Recognize options");
-  recognize_desc.add_options()
-    ("input,I",  po::value<std::vector<std::string> >(), "Input .dat file")
-    ("params,p", po::value<std::string>(), "Input .prs file")
-    ("output,O", po::value<std::string>(), "Output directory")
-    ;
-  po::options_description score_desc("Score options");
-  score_desc.add_options()
-    ("ethanol,e",  po::value<std::string>(), "Etalon .trn file")
-    ("test,t", po::value<std::string>(), "Testing .trn file")
-    ("output,O", po::value<std::string>(), "Output comparison file")
-    ;
 
 
 void encryptor(filesystem::path source,filesystem::path out){
@@ -215,11 +192,31 @@ ByteArray get_byte_array(unsigned char* word, int len)
 }
 
 
-int main() {
-  vector<string> paths;
-  encrypt_files(paths,"./test");
-  decrypt_files(paths,"./encrypted");
+int main(int argc, char *argv[]) {
+  po::options_description description("Basic commands:");
 
-	return 0;
+description.add_options()
+("help,h", "Show help")
+("mode,m","Select mode (encrypt/decrypt)")
+("input_folder,i","Select input folder")
+("output_folder,o","Select output folder")
+("key,k", po::value<string>()->default_value("qwertyuiopasdfgh"),"Select key");
+
+po::variables_map vm;
+po::store(po::command_line_parser(argc, argv).options(description).run(), vm);
+po::notify(vm);
+
+if (vm.count("help")){
+cout << description;
+}
+
+if (vm.count("key")){
+cout << "Default key is: " << vm["key"].as<string>() << endl;
+}
+
+
+
+return 0;
+
 }
 
