@@ -1,0 +1,2 @@
+/usr/bin/ar qc libAes256.a CMakeFiles/Aes256.dir/libs/aes256.cpp.o
+/usr/bin/ranlib libAes256.a

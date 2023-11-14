@@ -1,0 +1,2 @@
+/usr/bin/c++  -pedantic -Wall -Wextra -Wall - 
+Werror -g -rdynamic CMakeFiles/Test.dir/main.cpp.o -o Test 

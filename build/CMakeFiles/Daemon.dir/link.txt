@@ -1,0 +1,2 @@
+/usr/bin/c++  -pedantic -Wall -Wextra -Wall - 
+Werror -g -rdynamic CMakeFiles/Daemon.dir/main.cpp.o -o Daemon 
