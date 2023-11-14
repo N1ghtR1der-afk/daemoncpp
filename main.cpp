@@ -247,7 +247,7 @@ if (vm.count("key") and vm.count("input_folder") and vm.count("output_folder") a
   }
 }
 else{
-  cout<<"Invalid start, please, check the arguments"<<endl;
+  cout<<"Invalid start, please check the arguments"<<endl;
 }
 
 return 0;
