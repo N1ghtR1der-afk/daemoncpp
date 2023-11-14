@@ -25,6 +25,7 @@
     "*.tcc": "cpp",
     "bitset": "cpp",
     "codecvt": "cpp",
+    "compare": "cpp",
     "complex": "cpp",
     "concepts": "cpp",
     "condition_variable": "cpp",
